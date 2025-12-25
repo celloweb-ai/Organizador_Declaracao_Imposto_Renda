@@ -1,0 +1,31 @@
+Sub MoverIconeParaPosicao()
+    Dim shp As Shape
+    Dim ws As Worksheet
+    Dim nomeIconeProcurado As String
+    Dim novaPosicaoX As Double
+    Dim novaPosicaoY As Double
+    
+    ' Defina a planilha atual
+    Set ws = ActiveSheet
+    
+    ' Defina o nome do ícone que você quer mover (exato, como aparece no Excel)
+    nomeIconeProcurado = "Ícone 1" ' <-- Troque aqui pelo nome do seu ícone
+    
+    ' Defina a posição desejada
+    novaPosicaoX = 100 ' Posição X em pontos
+    novaPosicaoY = 50  ' Posição Y em pontos
+    
+    ' Procura pelo ícone na planilha
+    For Each shp In ws.Shapes
+        If shp.Name = nomeIconeProcurado Then
+            ' Move o ícone para a nova posição
+            shp.Left = novaPosicaoX
+            shp.Top = novaPosicaoY
+            MsgBox "Ícone '" & nomeIconeProcurado & "' movido com sucesso!", vbInformation
+            Exit Sub
+        End If
+    Next shp
+    
+    ' Se não encontrar
+    MsgBox "Ícone '" & nomeIconeProcurado & "' não encontrado.", vbExclamation
+End Sub
