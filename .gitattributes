@@ -1,20 +1,22 @@
-# Git LFS para arquivos Excel
+# Git LFS configuration for Excel files
 *.xlsx filter=lfs diff=lfs merge=lfs -text
-*.xlsm filter=lfs diff=lfs merge=lfs -text
 *.xls filter=lfs diff=lfs merge=lfs -text
+*.xlsm filter=lfs diff=lfs merge=lfs -text
 
-# Tratamento de finais de linha
+# Auto detect text files and perform LF normalization
 * text=auto
-*.txt text eol=lf
-*.md text eol=lf
-*.json text eol=lf
-*.yml text eol=lf
-*.yaml text eol=lf
 
-# Arquivos binários
+# Documents
+*.doc diff=astextplain
+*.DOC diff=astextplain
+*.docx diff=astextplain
+*.DOCX diff=astextplain
+*.pdf diff=astextplain
+*.PDF diff=astextplain
+
+# Images
 *.png binary
 *.jpg binary
 *.jpeg binary
 *.gif binary
 *.ico binary
-*.pdf binary
