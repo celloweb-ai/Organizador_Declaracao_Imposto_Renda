@@ -1,4 +1,4 @@
-# 🧾 Controle de Imposto de Renda 2025 - Excel
+# 🧾 Organizador de Declaração de Imposto de Renda - Excel
 
 <div align="center">
 
