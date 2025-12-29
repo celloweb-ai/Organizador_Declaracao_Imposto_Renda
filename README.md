@@ -1,4 +1,4 @@
-# 🧾 Organizador de Declaração de Imposto de Renda - Excel
+# 🧾 Organizador de Declaração de Imposto de Renda
 
 <div align="center">
 
