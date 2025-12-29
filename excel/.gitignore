@@ -1,0 +1,8 @@
+# Arquivos Excel serão distribuídos via Releases
+# Não comitar arquivos Excel grandes diretamente no repositório
+*.xlsx
+*.xls
+*.xlsm
+
+# Manter apenas o README
+!README.md
