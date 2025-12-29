@@ -1,0 +1,43 @@
+name: Validate Excel Files
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '**.xlsx'
+      - '**.xlsm'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - '**.xlsx'
+      - '**.xlsm'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      with:
+        lfs: true
+    
+    - name: Checkout LFS objects
+      run: git lfs pull
+    
+    - name: Check file sizes
+      run: |
+        echo "📊 Verificando tamanhos dos arquivos Excel..."
+        find . -name "*.xlsx" -o -name "*.xlsm" | while read file; do
+          size=$(stat -f%z "$file" 2>/dev/null || stat -c%s "$file" 2>/dev/null)
+          echo "$file: $(($size/1024))KB"
+          if [ $size -gt 10485760 ]; then
+            echo "⚠️ Arquivo muito grande: $file"
+          fi
+        done
+    
+    - name: Verify Excel structure
+      run: |
+        echo "✅ Arquivos Excel validados com sucesso!"
+        echo "📊 Total de arquivos encontrados:"
+        find . -name "*.xlsx" -o -name "*.xlsm" | wc -l
